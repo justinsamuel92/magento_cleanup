@@ -8,9 +8,10 @@ echo "Cache folders removed... \n"
 
 if [ "$1" = "-u" ]
 	then
-	rm -rf app/code/Mgt/Varnish/etc/module.xml
-	rm -rf app/code/Mgt/Varnish/registration.php
 	/opt/lampp/bin/php bin/magento setup:upgrade
+	chmod 777 var -R
+	chmod 777 pub/static -R
+	chmod 777 pub/media -R
 	echo "Setup Upgraded... \n"
 fi
 
@@ -26,7 +27,7 @@ fi
 
 if [ "$1" = "-d" ]
 	then
-	/opt/lampp/bin/php bin/magento setup:static-content:deploy -f
+	/opt/lampp/bin/php bin/magento setup:static-content:deploy en_US en_GB -f
 fi
 
 echo "Clean up complete! \n"
